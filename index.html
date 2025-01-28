@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Gastos - Carnaval 2025</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎭 Controle de Gastos - Carnaval 2025</h1>
+            <nav>
+                <button class="tab-button active" data-tab="overview">Visão Geral</button>
+                <button class="tab-button" data-tab="participants">Participantes</button>
+                <button class="tab-button" data-tab="expenses">Despesas</button>
+                <button class="tab-button" data-tab="reports">Relatórios</button>
+            </nav>
+        </header>
+
+        <main>
+            <!-- Visão Geral -->
+            <section id="overview" class="tab-content active">
+                <div class="summary-cards">
+                    <div class="card">
+                        <h3>Total de Adultos</h3>
+                        <p id="totalAdults">0</p>
+                    </div>
+                    <div class="card">
+                        <h3>Total de Despesas</h3>
+                        <p id="totalExpenses">R$ 0,00</p>
+                    </div>
+                    <div class="card">
+                        <h3>Valor por Adulto</h3>
+                        <p id="amountPerAdult">R$ 0,00</p>
+                    </div>
+                    <div class="card">
+                        <h3>Valor por Casal</h3>
+                        <p id="amountPerCouple">R$ 0,00</p>
+                    </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="expensesChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Cadastro de Participantes -->
+            <section id="participants" class="tab-content">
+                <div class="form-container">
+                    <h2>Adicionar Participante</h2>
+                    <form id="participantForm">
+                        <div class="form-group">
+                            <label for="name">Nome:</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tipo:</label>
+                            <select id="type">
+                                <option value="individual">Individual</option>
+                                <option value="casal">Casal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="children">Número de Crianças:</label>
+                            <input type="number" id="children" min="0" value="0">
+                        </div>
+                        <button type="submit" class="btn-primary">Adicionar</button>
+                    </form>
+                </div>
+                <div class="participants-list">
+                    <h2>Participantes Cadastrados</h2>
+                    <div id="participantsList"></div>
+                </div>
+            </section>
+
+            <!-- Registro de Despesas -->
+            <section id="expenses" class="tab-content">
+                <div class="form-container">
+                    <h2>Adicionar Despesa</h2>
+                    <form id="expenseForm">
+                        <div class="form-group">
+                            <label for="expenseType">Categoria:</label>
+                            <select id="expenseType" required>
+                                <option value="aluguel">Aluguel</option>
+                                <option value="comida">Comida</option>
+                                <option value="essenciais">Itens Essenciais</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Descrição:</label>
+                            <input type="text" id="description" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="amount">Valor:</label>
+                            <input type="number" id="amount" step="0.01" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Registrar</button>
+                    </form>
+                </div>
+                <div class="expenses-list">
+                    <h2>Despesas Registradas</h2>
+                    <div id="expensesList"></div>
+                </div>
+            </section>
+
+            <!-- Relatórios -->
+            <section id="reports" class="tab-content">
+                <div class="reports-container">
+                    <h2>Relatório de Despesas</h2>
+                    <div id="expenseSummary"></div>
+                    <button id="exportButton" class="btn-secondary">Exportar Relatório</button>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
